@@ -112,10 +112,10 @@
                      </View>) : null
              }
  
-//             <ButtonContainer>
-//                 <Button onPress = { handleSignOut } text = "SignOut" color = "#FF8000" />
-//                 <Button onPress = { handleRefreshtoken } text = "Refresh" color = "#FF3333" />
-//             </ButtonContainer>
+             {/* <ButtonContainer>
+                 <Button onPress = { handleSignOut } text = "SignOut" color = "#FF8000" />
+                 <Button onPress = { handleRefreshtoken } text = "Refresh" color = "#FF3333" />
+             </ButtonContainer> */}
          </View>
      );
  };

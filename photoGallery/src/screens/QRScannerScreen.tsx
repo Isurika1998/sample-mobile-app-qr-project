@@ -51,17 +51,18 @@ import {StyleSheet, StatusBar, Button, View, Text} from 'react-native';
 const QRScannerScreen = ({ navigation }) => {
 
     return (
+        <Text>Scanner</Text>
 
-                <QRCodeScanner
-                    onRead={onSuccess}
-                    showMarker={true}
-                    flashMode={RNCamera.Constants.FlashMode.off}
-                    cameraStyle={{
-                        marginTop: 10,
-                        height: 200,
-                        alignSelf: 'flex-end',
-                    }}
-                />
+                // <QRCodeScanner
+                //     onRead={onSuccess}
+                //     showMarker={true}
+                //     flashMode={RNCamera.Constants.FlashMode.off}
+                //     cameraStyle={{
+                //         marginTop: 10,
+                //         height: 200,
+                //         alignSelf: 'flex-end',
+                //     }}
+                // />
 
     );
 };

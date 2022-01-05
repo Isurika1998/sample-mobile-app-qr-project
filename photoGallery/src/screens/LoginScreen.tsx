@@ -31,7 +31,7 @@ const config = {
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
 
     const { loginState, setLoginState, loading, setLoading } = useLoginContext();
     const { state, initialize, signIn, getBasicUserInfo, getIDToken, getDecodedIDToken } = useAuthContext();
@@ -60,7 +60,7 @@ const LoginScreen = ({ navigation }) => {
                         ...loginState, ...state, ...basicUserInfo, idToken: idToken, ...decodedIDToken, hasLogin: true
                     });
                     setLoading(false);
-                    navigation.navigate("HomeScreen");
+                     props.navigation.navigate("HomeScreen");
                 } catch (error) {
                     setLoading(false);
                     // eslint-disable-next-line no-console
@@ -72,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
             getData();
         }else if (loginState.hasLogoutInitiated) {
             setLoginState(initialState);
-            navigation.navigate("LoginScreen");
+             props.navigation.navigate("LoginScreen");
         }
     }, [ state.isAuthenticated ]);
 

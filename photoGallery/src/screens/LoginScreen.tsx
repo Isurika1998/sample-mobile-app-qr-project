@@ -25,9 +25,11 @@ import { initialState, useLoginContext } from "../../context/LoginContext";
 
 // Create a config object containing the necessary configurations.
 const config = {
-    clientID: "LfQXHek26Vp1tbRwesJ0HJu4aMMa",
-    serverOrigin: "https://10.0.2.2:9443",
-    signInRedirectURL: "wso2sample://oauth2"
+    clientID: "L7YZnObZJGvd4DvmDsqdmk8SHkUa",
+    serverOrigin: "https://api.asgardeo.io/t/abccompany",
+    signInRedirectURL: "wso2sample://oauth2",
+    signOutRedirectURL: "wso2sample://oauth2",
+    scope: [ "openid" ]
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

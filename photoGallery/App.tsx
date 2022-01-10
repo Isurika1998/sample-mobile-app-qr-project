@@ -27,6 +27,7 @@ import QRScannerScreen from './src/screens/QRScannerScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import Icon from "react-native-vector-icons/FontAwesome";
 import {StyleSheet, StatusBar, Button, View, Text} from 'react-native';
+import MainScreen from './src/screens/MainScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +39,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName = "Login" headerMode = "none">
           <Stack.Screen name = "Login" component = {LoginScreen} options={ { headerShown: false } } />
-          <Stack.Screen name = "photoGallery" component = {GalleryScreen}
+          {/* <Stack.Screen name = "photoGallery" component = {GalleryScreen}
               options = {({ navigation, route }) => ({
                 title: 'photoGallery',
                 headerStyle: {
@@ -49,33 +50,26 @@ const App = () => {
                   fontWeight: 'bold',
                 },
                 headerTitleAlign: 'center',
-                // headerRight: () => (
-                //     <Icon.Button
-                //       name="qrcode"
-                //       backgroundColor="#f4511e"
-                //       size={30}
-                //       onPress={() => navigation.navigate('Scanner')} />
-                //     ),
               })}
-          />
-          <Stack.Screen name = "Scanner" component = {QRScannerScreen}
-              options = {({ navigation, route }) => ({
-                  title: 'Scan QR Code',
-                  headerStyle: {
-                    backgroundColor: '#f4511e',
-                  },
-                  headerTintColor: '#fff',
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                  },
-                  headerTitleAlign: 'center',
-                })}
-          />
-          <Stack.Screen
-              name="HomeScreen"
-              component={ HomeScreen }
-              options={ { headerShown: false } }
-          />
+          /> */}
+{/*           <Stack.Screen name = "Scanner" component = {QRScannerScreen} */}
+{/*               options = {({ navigation, route }) => ({ */}
+{/*                   title: 'Scan QR Code', */}
+{/*                   headerStyle: { */}
+{/*                     backgroundColor: '#f4511e', */}
+{/*                   }, */}
+{/*                   headerTintColor: '#fff', */}
+{/*                   headerTitleStyle: { */}
+{/*                     fontWeight: 'bold', */}
+{/*                   }, */}
+{/*                   headerTitleAlign: 'center', */}
+{/*                 })} */}
+{/*           /> */}
+           <Stack.Screen
+               name="MainScreen"
+               component={ MainScreen }
+               options={ { headerShown: false } }
+           />
         </Stack.Navigator>
       </NavigationContainer>
     </LoginContextProvider>

@@ -20,16 +20,14 @@
 import React, {useEffect} from 'react';
 import { useAuthContext } from "@asgardeo/auth-react-native";
 import { Button, Image, Linking, Text, View, ActivityIndicator, TouchableOpacity } from "react-native";
-import { styles } from "../components/styles";
+import { styles } from "../components/stylesheet";
 import { initialState, useLoginContext } from "../../context/LoginContext";
 
 // Create a config object containing the necessary configurations.
 const config = {
-    clientID: "L7YZnObZJGvd4DvmDsqdmk8SHkUa",
-    serverOrigin: "https://api.asgardeo.io/t/abccompany",
-    signInRedirectURL: "wso2sample://oauth2",
-    signOutRedirectURL: "wso2sample://oauth2",
-    scope: [ "openid" ]
+    clientID: "A9qHTjNwUOAifHqCdfcvwLYfslYa",
+    serverOrigin: "https://10.0.2.2:9443",
+    signInRedirectURL: "wso2sample://oauth2"
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -62,7 +60,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
                         ...loginState, ...state, ...basicUserInfo, idToken: idToken, ...decodedIDToken, hasLogin: true
                     });
                     setLoading(false);
-                     props.navigation.navigate("HomeScreen");
+                     props.navigation.navigate("MainScreen");
                 } catch (error) {
                     setLoading(false);
                     // eslint-disable-next-line no-console
@@ -74,7 +72,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
             getData();
         }else if (loginState.hasLogoutInitiated) {
             setLoginState(initialState);
-             props.navigation.navigate("LoginScreen");
+             props.navigation.navigate("Login");
         }
     }, [ state.isAuthenticated ]);
 
@@ -117,6 +115,7 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
                                 <ActivityIndicator size="large" color="#FF8000" />
                             </View>) : null
                     }
+                    
                 </View>
             </View>
         </View>

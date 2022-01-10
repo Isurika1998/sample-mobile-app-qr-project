@@ -19,7 +19,7 @@
 import React from 'react';
 import { useAuthContext } from "@asgardeo/auth-react-native";
 import { useLoginContext } from "../../context/LoginContext";
-import {View, StyleSheet, StatusBar} from 'react-native';
+import {View, StyleSheet, StatusBar, Image} from 'react-native';
 import GridImageView from 'react-native-grid-image-viewer';
 
 const GalleryScreen = ({ navigation }) => {

@@ -18,8 +18,8 @@
 
 import React, {useEffect} from 'react';
 import {StyleSheet, StatusBar, Button, View, Text} from 'react-native';
-//import QRCodeScanner from 'react-native-qrcode-scanner';
-//import { RNCamera } from 'react-native-camera';
+import QRCodeScanner from 'react-native-qrcode-scanner';
+import { RNCamera } from 'react-native-camera';
 
 
     let onSuccess = (e) => {
@@ -51,19 +51,16 @@ import {StyleSheet, StatusBar, Button, View, Text} from 'react-native';
 const QRScannerScreen = ({ navigation }) => {
 
     return (
-        <Text>Scanner</Text>
-
-                // <QRCodeScanner
-                //     onRead={onSuccess}
-                //     showMarker={true}
-                //     flashMode={RNCamera.Constants.FlashMode.off}
-                //     cameraStyle={{
-                //         marginTop: 10,
-                //         height: 200,
-                //         alignSelf: 'flex-end',
-                //     }}
-                // />
-
+        <QRCodeScanner
+            onRead={onSuccess}
+            showMarker={true}
+            flashMode={RNCamera.Constants.FlashMode.off}
+            cameraStyle={{
+                marginTop: 10,
+                height: 200,
+                alignSelf: 'flex-end',
+            }}
+        />
     );
 };
 

@@ -23,9 +23,24 @@ const styles = StyleSheet.create({
         margin: 10
     },
 
+    buttonContainer: {
+        marginLeft: "5%",
+        width: "90%",
+
+    },
+
     button: {
-        marginLeft: "35%",
-        width: "30%"
+        backgroundColor: "#990033",
+        height: 50,
+        borderRadius: 10
+    },
+
+    textStyle: {
+        color: "white",
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+        paddingTop: 7,
     },
 
     deco: {
@@ -73,14 +88,16 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        borderRadius: 30,
-        height: "60%",
+        borderRadius: 10,
+        height: "45%",
         resizeMode: "contain",
-        width: "85%"
+        width: "45%",
     },
 
     imageAlign: {
-        alignItems: "center"
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: "90%"
     },
 
     loading: {
@@ -117,15 +134,10 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
 
-    textStyle: {
-        color: "blue",
-        textDecorationLine: "underline"
-    },
-
     textpara: {
         borderBottomColor: "#282c34",
         color: "#2A2A2A",
-        fontSize: 18,
+        fontSize: 28,
         justifyContent: "center",
         paddingLeft: 20,
         paddingRight: 20,

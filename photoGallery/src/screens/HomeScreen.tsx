@@ -19,9 +19,10 @@
  import { useAuthContext } from "@asgardeo/auth-react-native";
  import React from "react";
  import { ActivityIndicator, Text, View } from "react-native";
- import { ScrollView } from "react-native-gesture-handler";
- import { styles } from "../components/styles";
+ import { styles } from "../components/stylesheet";
  import { useLoginContext } from "../../context/LoginContext";
+ import { Button, ButtonContainer } from "../components";
+
  
  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
  const HomeScreen = () => {
@@ -95,15 +96,13 @@
                          { loginState.sub }</Text>
                  </View>
              </View>
- 
-             <ScrollView>
+
                  <View style = { styles.flex }>
                      <View>
                          <Text style = { styles.flexHeading }>ID token</Text>
                          <Text style = { styles.body }>{ loginState.idToken }</Text>
                      </View>
                  </View>
-             </ScrollView>
  
              {
                  loading ? 
@@ -112,10 +111,12 @@
                      </View>) : null
              }
  
-             {/* <ButtonContainer>
-                 <Button onPress = { handleSignOut } text = "SignOut" color = "#FF8000" />
-                 <Button onPress = { handleRefreshtoken } text = "Refresh" color = "#FF3333" />
-             </ButtonContainer> */}
+
+            <ButtonContainer>
+                <Button onPress = { handleSignOut } text = "SignOut" color = "#FF8000" />
+                <Button onPress = { handleRefreshtoken } text = "Refresh" color = "#FF3333" />
+            </ButtonContainer>
+
          </View>
      );
  };

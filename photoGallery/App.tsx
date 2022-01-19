@@ -28,8 +28,12 @@ import HomeScreen from './src/screens/HomeScreen';
 import Icon from "react-native-vector-icons/FontAwesome";
 import {StyleSheet, StatusBar, Button, View, Text} from 'react-native';
 import MainScreen from './src/screens/MainScreen';
+import {DeviceInfoUtil} from '@wso2/auth-qr-react-native';
 
 const Stack = createNativeStackNavigator();
+
+// Initialize device information
+new DeviceInfoUtil();
 
 const App = () => {
   return (
@@ -39,36 +43,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator initialRouteName = "Login" headerMode = "none">
           <Stack.Screen name = "Login" component = {LoginScreen} options={ { headerShown: false } } />
-          {/* <Stack.Screen name = "photoGallery" component = {GalleryScreen}
-              options = {({ navigation, route }) => ({
-                title: 'photoGallery',
-                headerStyle: {
-                  backgroundColor: '#f4511e',
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                },
-                headerTitleAlign: 'center',
-              })}
-          /> */}
-{/*           <Stack.Screen name = "Scanner" component = {QRScannerScreen} */}
-{/*               options = {({ navigation, route }) => ({ */}
-{/*                   title: 'Scan QR Code', */}
-{/*                   headerStyle: { */}
-{/*                     backgroundColor: '#f4511e', */}
-{/*                   }, */}
-{/*                   headerTintColor: '#fff', */}
-{/*                   headerTitleStyle: { */}
-{/*                     fontWeight: 'bold', */}
-{/*                   }, */}
-{/*                   headerTitleAlign: 'center', */}
-{/*                 })} */}
-{/*           /> */}
-           <Stack.Screen
-               name="MainScreen"
-               component={ MainScreen }
-               options={ { headerShown: false } }
+           <Stack.Screen name="MainScreen" component={ MainScreen } options={ { headerShown: false } }
            />
         </Stack.Navigator>
       </NavigationContainer>

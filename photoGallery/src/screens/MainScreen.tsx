@@ -26,6 +26,7 @@
  import HomeScreen from './HomeScreen';
  import QRScannerScreen from './QRScannerScreen';
 import GalleryScreen from './GalleryScreen';
+import DevicesScreen from './DevicesScreen';
  
  const Tab = createBottomTabNavigator();
  
@@ -42,7 +43,7 @@ import GalleryScreen from './GalleryScreen';
                                 style={{tintColor: focused ? '#990033' : '#363636'}}
                             />
                         );
-                    }else if (route.name === 'Home') {
+                    }else if (route.name === 'Login Info') {
                         return (
                             <Image
                                 source={require("../assets/user-profile.png")}
@@ -50,6 +51,13 @@ import GalleryScreen from './GalleryScreen';
                             />
                         );
                     } else if (route.name === 'Scan') {
+                        return (
+                            <Image
+                                source={require("../assets/user-profile.png")}
+                                style={{tintColor: focused ? '#990033' : '#363636'}}
+                            />
+                        );
+                    } else if (route.name === 'Devices') {
                         return (
                             <Image
                                 source={require("../assets/user-profile.png")}
@@ -83,8 +91,9 @@ import GalleryScreen from './GalleryScreen';
                 },
                 headerTitleAlign: 'center',
             })} />
-       <Tab.Screen name="Home" component={HomeScreen} />
        <Tab.Screen name="Scan" component={QRScannerScreen} />
+       <Tab.Screen name="Login Info" component={HomeScreen} />
+       <Tab.Screen name="Devices" component={DevicesScreen} />
      </Tab.Navigator>
      );
  };

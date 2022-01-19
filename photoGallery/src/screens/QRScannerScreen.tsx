@@ -20,35 +20,39 @@ import React, {useEffect} from 'react';
 import {StyleSheet, StatusBar, Button, View, Text} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
+import { useLoginContext } from "../../context/LoginContext";
+import {AuthorizationService} from '@wso2/auth-qr-react-native';
 
+const QRScannerScreen = ({ navigation }) => {
+
+    const { loginState, setLoginState, loading, setLoading } = useLoginContext();
 
     let onSuccess = (e) => {
         console.log('Scanned: ', e.data);
+        let authData = AuthorizationService.processAuthRequest(e.data);
+        AuthorizationService.sendAuthRequest(authData, loginState, 'SUCCESSFUL')
+            .then((res) => {
+                let response = JSON.parse(res);
+                console.log(
+                    'Authorization response: ' +
+                    response.data.authenticationStatus,
+                );
 
-//        try {
-//            let account = new AccountsService();
-//            account
-//                .addAccount(
-//                    JSON.parse(e.data),
-//                    pushId,
-//                )
-//                .then((response) => {
-//                    let res = JSON.parse(response);
-//                    console.log('Add account response: ' + response);
-//                    if (res.res == 'OK') {
-//                        navigation.navigate('Add Success', res.data);
-//                    } else if (res.res == 'FAILED') {
-//                        navigation.navigate('Add Failed');
-//                    }
-//                });
-//        } catch (err) {
-//            console.log(err);
-//            navigation.navigate('Add Failed');
-//        }
+                if (response.res == 'OK') {
+                    console.log(
+                        'Activity data at success: ' + JSON.stringify(authData),
+                    );
+                    // storeData(JSON.stringify(authData));
+                }
+
+                // navigation.navigate(
+                //     response.res == 'OK' ? 'Main' : 'Authorization Failed',
+                // );
+            })
+            .catch((err) => {
+                console.log('Send auth error: ' + err);
+            });
     };
-
-
-const QRScannerScreen = ({ navigation }) => {
 
     return (
         <QRCodeScanner

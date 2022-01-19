@@ -24,40 +24,6 @@ import GridImageView from 'react-native-grid-image-viewer';
 
 const GalleryScreen = ({ navigation }) => {
 
-    const { loginState, setLoginState, loading, setLoading } = useLoginContext();
-    const { state, signOut, refreshAccessToken } = useAuthContext();
-
-    /**
-     * This function will handle the refresh button click.
-     */
-    const handleRefreshtoken = async () => {
-
-        setLoading(true);
-        refreshAccessToken()
-            .catch((error) => {
-                setLoading(false);
-                // eslint-disable-next-line no-console
-                console.log(error);
-            });
-    };
-
-    /**
-     * This function will handle the sign out button click.
-     */
-    const handleSignOut = async () => {
-
-        setLoginState({
-            ...loginState, ...state, hasLogoutInitiated: true
-        });
-
-        signOut()
-            .catch((error) => {
-                setLoading(false);
-                // eslint-disable-next-line no-console
-                console.log(error);
-            });
-    };
-
     return (
     <>
     <StatusBar barStyle={'dark-content'} />

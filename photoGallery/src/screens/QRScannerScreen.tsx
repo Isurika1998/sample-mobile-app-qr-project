@@ -22,6 +22,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { useLoginContext } from "../../context/LoginContext";
 import {AuthorizationService} from '@wso2/auth-qr-react-native';
+import ReactNativeBiometrics from 'react-native-biometrics'
 
 const QRScannerScreen = ({ navigation }) => {
 
@@ -29,8 +30,53 @@ const QRScannerScreen = ({ navigation }) => {
 
     let onSuccess = (e) => {
         console.log('Scanned: ', e.data);
+
+        ReactNativeBiometrics.isSensorAvailable().then(resultObject => {
+            const {available, biometryType} = resultObject;
+          
+            if (available && biometryType === ReactNativeBiometrics.TouchID) {
+              console.log('TouchID is supported');
+          
+            } else if (available && biometryType === ReactNativeBiometrics.FaceID) {
+              console.log('FaceID is supported');
+          
+            } else if (available && biometryType === ReactNativeBiometrics.Biometrics) {
+              console.log('Biometrics is supported');
+              try{
+                ReactNativeBiometrics.simplePrompt({
+                    promptMessage: 'Confirm fingerprint',
+                })
+                    .then(resultObject => {
+                    const {success} = resultObject;
+                
+                    if (success) {
+                        console.log('successful biometrics provided');
+                        sendRequestToSDK(e);
+                
+                    } else {
+                        console.log('user cancelled biometric prompt');
+                    }
+                    })
+                    .catch(() => {
+                    console.log('biometrics failed');
+                    });
+                }
+                catch(e){
+                    console.log("Device not Support Fingerprint")
+                }
+            } else {
+                console.log('Biometrics not supported');
+            }
+        });
+        
+        
+    };
+
+    let sendRequestToSDK = (e) => {
+        console.log('inside sendRequestToSDK method');
         let authData = AuthorizationService.processAuthRequest(e.data);
-        AuthorizationService.sendAuthRequest(authData, loginState, 'SUCCESSFUL')
+        console.log('got authData');
+        AuthorizationService.sendAuthRequest(authData, loginState.idToken, 'SUCCESSFUL')
             .then((res) => {
                 let response = JSON.parse(res);
                 console.log(

@@ -24,6 +24,8 @@ target 'photoGallery' do
 
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
 
+  pod 'react-native-biometrics', :path => '../node_modules/react-native-biometrics'
+
   target 'photoGalleryTests' do
     inherit! :complete
     # Pods for testing

@@ -37,7 +37,6 @@ export class AuthorizationService {
             authRequest = {
                 sessionDataKey: request.sessionDataKey,
                 tenantDomain: request.tenantDomain,
-                host: request.host
             };
         }
         else {
@@ -55,9 +54,10 @@ export class AuthorizationService {
     static sendAuthRequest(authRequest, token, response) {
         return __awaiter(this, void 0, void 0, function* () {
             const timestamp = new DateTimeUtil();
-            const res = {
+            const authResponse = {
                 sessionDataKey: authRequest.sessionDataKey,
-                clientID: "A9qHTjNwUOAifHqCdfcvwLYfslYa"
+                tenantDomain: authRequest.tenantDomain,
+                clientID: "LfQXHek26Vp1tbRwesJ0HJu4aMMa"
             };
             const headers = {
                 Accept: "application/json",
@@ -65,7 +65,7 @@ export class AuthorizationService {
                 "Authorization": "Bearer " + token
             };
             const authRequestBody = {
-                authResponse: res
+                authResponse: authResponse
             };
             const authUrl = authRequest.host + "/qr-auth/authenticate";
             const request = new RequestSenderUtil();

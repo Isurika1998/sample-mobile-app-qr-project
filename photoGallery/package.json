@@ -19,6 +19,7 @@
     "axios": "^0.21.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-biometrics": "^2.1.4",
     "react-native-camera": "^4.2.1",
     "react-native-device-info": "^7.4.0",
     "react-native-grid-image-viewer": "^1.2.2",
@@ -26,6 +27,7 @@
     "react-native-qrcode-scanner": "^1.5.4",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-ssl-pinning": "^1.5.4",
     "react-native-vector-icons": "^9.0.0",
     "text-encoding-polyfill": "^0.6.7"
   },

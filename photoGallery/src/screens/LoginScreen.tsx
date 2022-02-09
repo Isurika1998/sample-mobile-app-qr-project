@@ -25,8 +25,8 @@ import { initialState, useLoginContext } from "../../context/LoginContext";
 
 // Create a config object containing the necessary configurations.
 const config = {
-    clientID: "A9qHTjNwUOAifHqCdfcvwLYfslYa",
-    serverOrigin: "https://10.0.2.2:9443",
+    clientID: "zCoVxvKyxRtKTytoszh7kffTKV8a",
+    serverOrigin: "https://192.168.1.4:9443",
     signInRedirectURL: "wso2sample://oauth2"
 };
 
@@ -47,9 +47,8 @@ const LoginScreen = (props: { navigation: { navigate: (arg0: string) => void; };
      * This hook will listen for auth state updates and proceed.
      */
     useEffect(() => {
-    console.log("inside useEffect");
         if (state?.isAuthenticated) {
-        console.log("authenticated");
+        console.log("authenticated user");
             const getData = async () => {
                 try {
                     const basicUserInfo = await getBasicUserInfo();

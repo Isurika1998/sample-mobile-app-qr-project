@@ -35,16 +35,16 @@ export class AuthorizationService {
 
         let authRequest: AuthRequestInterface;
 
-        if (request.sessionDataKey) {
-            authRequest = {   
-                sessionDataKey: request.sessionDataKey,
-                tenantDomain: request.tenantDomain,
-                host: request.host
-            };
-        } else {
-
-            throw new Error("One or more required parameters (tenantDomain, sessionDataKey) was not found.");
-        }
+   
+            if (request.sessionDataKey) {
+                authRequest = {   
+                    sessionDataKey: request.sessionDataKey,
+                    tenantDomain: request.tenantDomain,
+                };
+            } else {
+    
+                throw new Error("One or more required parameters (tenantDomain, sessionDataKey) was not found.");
+            }      
 
         return authRequest;
     }
@@ -64,8 +64,9 @@ export class AuthorizationService {
 
         const timestamp = new DateTimeUtil();
 
-        const res = {
+        const authResponse = {
             sessionDataKey: authRequest.sessionDataKey,
+            tenantDomain: authRequest.tenantDomain,
             clientID: "A9qHTjNwUOAifHqCdfcvwLYfslYa"
         };
 
@@ -76,7 +77,7 @@ export class AuthorizationService {
         };
 
         const authRequestBody: any = {
-            authResponse: res
+            authResponse: authResponse
         };
 
 

@@ -29,7 +29,7 @@
  
      const { loginState, setLoginState, loading, setLoading } = useLoginContext();
      const { state, signOut, refreshAccessToken } = useAuthContext();
- 
+ console.log(loginState.idToken);
      /**
       * This function will handle the refresh button click.
       */
